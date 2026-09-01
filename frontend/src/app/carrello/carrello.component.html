@@ -1,1 +1,17 @@
-<p>carrello works!</p>
+<h2>Il tuo Carrello</h2>
+<a routerLink="/">← Continua lo Shopping</a>
+
+<ul>
+  @for (item of items; track $index) {  <!--è una variabile speciale che Angular fornisce automaticamente dentro un @for, rappresenta la posizione numerica dell'elemento nell'array (0, 1, 2, ...), non un identificatore del dato stesso.Altrimenti in questo caso ci sarebbero due prodotti o più con le stesso id-->
+    <li>
+      <strong>{{ item.nome }}</strong> - Prezzo Ivato: {{ item.prezzo_ivato }} €
+    </li>
+  } @empty {
+    <li>Il carrello è vuoto.</li>
+  }
+</ul>
+
+@if (items.length > 0) {
+  <h3>Totale Ivato: {{ totale }} €</h3>
+  <button (click)="svuota()">Svuota Carrello</button>
+}
