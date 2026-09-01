@@ -1,17 +1,23 @@
 <h2>Catalogo Prodotti</h2>
-<a routerLink = '/carrello'>Carrello</a>
+<a routerLink='/carrello'>Carrello</a>
 
 @if (caricamento){
-    <p>caricamento prodotti in corso...</p>
+<p>caricamento prodotti in corso...</p>
 } @else{
+<ul>
     @for (p of prodotti; track p.id) {
-       <p> {{p.nome}} -- Prezzo: {{p.prezzo}} </p>
-       <p> -- Prezzo Ivato: {{p.prezzo_ivato}}</p>
-        <button (click) = "aggiungiAlCarrello(p)">Aggiungi al carrello</button>
-        <a [routerLink] = "['/dettaglio', p.id]">dettagli</a>
+    <li>
+        <p> {{p.nome}} -- Prezzo: {{p.prezzo}} </p>
+        <p> -- Prezzo Ivato: {{p.prezzo_ivato}}</p>
+        <button (click)="aggiungiAlCarrello(p)">Aggiungi al carrello</button>
+        <a [routerLink]="['/dettaglio', p.id]">dettagli</a>
+    </li>
     } @empty {
+    <li>
         <p>nessun prodotto presente nel catalogo</p>
+    </li>
     }
+</ul>
 
 
 }

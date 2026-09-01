@@ -1,1 +1,19 @@
-<p>dettaglio-prodotti works!</p>
+<h2>Dettagli</h2>
+@if (caricamento) {
+  <p>caricamento dettagli in corso...</p>
+} @else if (prodotto) {
+  <ul>
+    <li>
+      <p>{{prodotto.nome}} --id {{prodotto.id}} --Prezzo: {{prodotto.prezzo}} --Prezzo Ivato: {{prodotto.prezzo_ivato}}</p>
+      <button (click)="aggiungiAlCarrello()">Aggiungi al carrello</button>
+      <br><br>
+      <a routerLink="/">Torna al negozio</a>
+    </li>
+  </ul>
+} @else {
+  <ul>
+    <li>
+      <p>Prodotto non trovato</p>
+    </li>
+  </ul>
+}
